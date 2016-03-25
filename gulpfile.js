@@ -96,17 +96,3 @@ gulp.task('watch', ['connect', 'serve'], function() {
     gulp.watch('app/**/*', ['webpack']);
     gulp.watch('app/index.html', ['copyIndex']);
 });
-
-gulp.task('vendor', function() {
-    return gulp.src([
-            '../assets/ui-router/release/angular-ui-router.min.js',
-            '../assets/angular/angular.min.js'
-        ])
-        .pipe(order([
-            'angular/angular.min.js',
-            'ui-router/release/angular-ui-router.min.js'
-        ], {base: '../assets'}))
-        .pipe(concat('vendor.js'))
-        .pipe(size() )
-        .pipe(gulp.dest('dist/'))
-})
